@@ -3,58 +3,79 @@ Brian Wang, Jeffery Tang
 SoftDev
 K06 -- Thinking about jobs
 2022-09-29
-time spent: 1 hr
+time spent: 1.5 hr
  DISCO:
-  - 
- QCC:
-  - 
- OPS SUMMARY:
-  1. 
+  - csv file manipulation in Python (please no)
+  - pseudorandom
+  - Testing pseudorandom, a lot
+  - updating dictionaries
+  - dictionary names in python are ALIASES
+QCC:
+  - how to effectively work with csvs, and other csv readers
+ How the script works:
+  1. Populate:
+      a. We use the csv module to get a csv reader object for occupations.csv
+      b. We iterate through each row, storing the name as keys and percents as values in a dictionary
+      c. We get rid of the first entry, as it does not contain meaningful info
+  2. Rewrite:
+      a. We establish a running sum for the percents
+      b. We iterate through the dictionary, replacing their percent value with a cumulative percent value
+  3. Choose:
+      a. We copy the dictionary to save the "total" percent
+      b. We get a random number between 0 and total percent
+      c. We iterate through the dictionary until we find the job (key) with a percent (value) higher than our randomly selected one
+      d. Return the job
  '''
 
 import csv
 import random
     
 #Randomly choose a student name out of all periods
-def choose(dictionary):
-    #Randomly select a key from the available keys in the dictionary
-    key = list(dictionary)[random.randint(0,len(list(dictionary))-1)]
-    #return(random.choice(dictionary[list(dictionary)[random.randint(0,len(list(dictionary))-1)]]))
+def choose(dic):
+    dic_tmp = dic.copy()
+    total = dic_tmp.pop("Total")/2
+    rand = random.random() * total
+    for job in dic_tmp:
+        if rand < dic_tmp.get(job):
+            return job
     
-    #if class is not empty
-    if len(dictionary[key]) > 0:
-        #Return the randomly selected key along with a randomly selected element in the list associated with the key
-        choice = random.choice(dictionary[key])
-        return "name: " + choice[0] + "\npd: " + key + "\nducky: " + choice[1]
-    return "empty"
+
+
+#Method to rewrite percentages as cumulative instead of independant
+def redef_percent(dic):
+    run_sum = 0.0
+    for job in dic:
+        run_sum = float(dic.get(job)) + run_sum
+        dic.update({job:run_sum})
+        
 
 def populate(dic):
-    f = open("occupations.csv", "r")
-    file = f.read()
-    dic_keys = [] #list of keys because we had some trouble with it
-               
-    #iterate through all the blocks of info
-    while file.find("@@@") > -1:
-        #break up the blocks of info
-        devo_info = file[0 : file.find("@@@")]
-        file = file[file.find("@@@") + 3 :]
-        devo_pd = devo_info[0 : devo_info.find("$$$")]
-        devo_info = devo_info[devo_info.find("$$$") + 3 :]
-        devo_name = devo_info[0 : devo_info.find("$$$")]
-        devo_info = devo_info[devo_info.find("$$$") + 3 :]
-        devo_ducky = devo_info
-        
-        #add the new entry
-        #if the pd exists
-        if devo_pd in dic_keys:
-            dic[devo_pd].append([devo_name, devo_ducky])
-        #if the pd does not exist
-        else:
-            dic[devo_pd] = [[devo_name, devo_ducky]]
-            dic_keys.append(devo_pd)
-            
+    #shamelessly stolen from geeksforgeeks (as help!)
+    with open("occupations.csv", "r") as f:
+        file = csv.reader(f)
+                   
+        #iterate through all the blocks of info
+        for row in file:
+            dic[row[0]] = row[1]
+    dic.pop("Job Class")
+    
+    
 dictionary = {}
 populate(dictionary)
-#print(dictionary)
-print(choose(dictionary))
-    
+print(dictionary)
+redef_percent(dictionary)
+#print(choose(dictionary))
+
+#test to test weighted random
+test = dictionary.copy()
+#wipe the values so we can use as a counter
+for job in test:
+    test.update({job:0})
+#run 100,000 times
+for i in range(100000):
+    rand = choose(dictionary)
+    test.update({rand:test.get(rand) + 1})
+#convert big number to small number
+for job in test:
+    test.update({job:test.get(job)/1000})
+print(test)
