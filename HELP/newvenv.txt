@@ -1,0 +1,10 @@
+Creating a new VENV (Virtual Env)
+python3 -m venv NAME
+cd NAME
+. bin/activate
+
+YOU ARE NOW OPERATING IN A LIVE VENV
+install everything willy nilly now.
+
+If you want to murder your heroes, 
+deactivate
