@@ -9,9 +9,8 @@ DISCO:
 - rediscovered hyperlinks and formatting in HTML
 - combining our numbercruncher.py output onto flask app
 - BWANG
--
 QCC:
--
+- How would you effectively hide code from a viewer
 OPS SUMMARY:
 
 
@@ -63,14 +62,15 @@ def choose_ref():
         #iterate through all the blocks of info
         for row in file:
             refs.append(row[0])
-        print(file)
+    #our references are subpar
+    return random.choice(refs)
 
 print(choose_ref())
 dictionary = {}
 populate(dictionary)
 #print(dictionary)
 redef_percent(dictionary)
-link = "choose_ref()";
+link = choose_ref();
 
 
 #--------------------------
