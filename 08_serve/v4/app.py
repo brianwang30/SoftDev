@@ -1,13 +1,16 @@
 '''
-team BWANG: Shreya Roy, April Lee, Brian Wang
+team BWANG: Shreya Roy, April Li, Brian Wang
 Soft Dev
 Period 8
 K08 -- serve
 2022-10-06
 Time spent: .2 hr
 
-Prediction: Only when __name__ is "__main__", the 
-Result: 
+Prediction: Only when __name__ is "__main__", the debugger runs like
+            v3 of app.py. Otherwise, it will run like v2 of app.py.
+Result: Runs identical to v3 of app.py, unless the "__main__" string in
+        the conditional is altered in any way, then app does not run at
+        all.
 
 '''
 
