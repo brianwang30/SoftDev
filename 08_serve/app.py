@@ -12,7 +12,9 @@ DISCO:
 QCC:
 - How would you effectively hide code from a viewer
 OPS SUMMARY:
-
+- same dictionary stuff from before
+- import csv
+- refrence a link
 
 '''
 
@@ -63,14 +65,15 @@ def choose_ref():
         for row in file:
             refs.append(row[0])
     #our references are subpar
+    print(refs)
     return random.choice(refs)
 
-print(choose_ref())
+#print(choose_ref())
 dictionary = {}
 populate(dictionary)
 #print(dictionary)
 redef_percent(dictionary)
-link = choose_ref();
+
 
 
 #--------------------------
@@ -81,7 +84,8 @@ app = Flask(__name__) #create instance of class Flask
 def hello_world():
     print("the __name__ of this module is... ")
     print(__name__)
-    return '<a href = ' + link + '>' + choose(dictionary) + "</a>" + "<br><br> - brought to you by BWANG"
+    link = choose_ref()
+    return '<a href = ' + link + '>' + choose(dictionary) + "</a>" + "<br><br> - brought to you by BWANG <br>and nothing more<br><br><img src=\"https://i.ytimg.com/vi/ACGRshAYMt8/hqdefault.jpg\" alt = \"why bother\">"
 
 if __name__ == "__main__":  # true if this file NOT imported
     app.debug = True        # enable auto-reload upon code change
