@@ -1,0 +1,61 @@
+All alone today :')
+Will put more here to mimic future or past conversation
+
+Prediction phase: 
+request - requesting input from users or machine?
+
+print("***DIAG: request obj ***")
+print(request) 
+print("***DIAG: request.args ***")
+print(request.args)
+#print("***DIAG: request.args['username']  ***")
+#print(request.args['username'])
+print("***DIAG: request.headers ***")
+print(request.headers)
+return render_template( 'login.html' )
+    
+Lots of information requested,
+but the prescense of "DIAG" makes me believe that this is info from the machine.
+What is a "request" object? 
+What is .args of request? A list/dictionary? 
+probably where login is saved, since the "login" template is then used. 
+
+<form action="/auth">
+  <input type="text" name="username">
+  <input type="submit" name="sub1">
+</form>
+
+Aforementioned login form, in template.html.
+Action from form redirects us to /auth, which runs the auth method in flask. 
+Then, inputs are requested from the user, first being a username, then a button press. 
+As in, we are literally redirected to a different site from the get request,
+which makes flask run more code. 
+
+http://127.0.0.1:5000/auth?username=hey&sub1=Submit+Query
+It appears I can directly manipulate the username from inside the url. 
+
+Waaaa hooo HAAAH
+
+interesting notes: 
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:106.0) Gecko/20100101 Firefox/106.0
+Boutta out myself for using Chrome. Maybe I should switch to Opera GX. 
+
+Connection: keep-alive
+I hope it is. 
+
+Upgrade-Insecure-Requests: 1
+puter knows too much. 
+
+Cool. 
+print("***DIAG: request.args['username']  ***")
+print(request.args['username'])
+My name is now everywhere. 
+h
+
+Interested. 
+***DIAG: request.args['username']  ***
+how long of an input does the text query accept? I'm interested. Usually I would never make a username this long, but I suppose this instance is different. But exceptions make for the best stories. I remember 5 years ago, when I ate a whole bag of sour patch kid gummies. I would usually never eat a whole pack of sour patch kid gummies, but I decided to that day because I felt like making an exception. As I was happily wolfing down the bag, my tongue began to sting. The sour patch kid gummies were, indeed, sour patch kid gummies, instead of sweet patch kid gummies, or alive patch kid gummies. Being the dumbass that I was and am, however, I decided to soldier on and continue eating more sour patch kid gummies. The sour patch kid gummies each fought for their life, burning my tongue with their sour acidic blood. Eventually, by the end, my teeth hurt, my tongue burned, and I had a very horrible experience. I would not advise anybody to eat a whole sour patch kid bag of gummies, unless they too want teeth pain. Or maybe I just have sensensitive teeth. This reminds me of that time I ate a whole pineapple. An entire pineapple. With pineapple juice. I believe that the acidic pineapple slowly eroded my teeth armor, until my inner teeth were all outer teeth. So, like I would not advise eating a whole bag of sour patch kid gummies, I would also not advise eating a whole pineapple. 
+
+It appears there is no limit to the username length. 
+
+what the hell is get + post
