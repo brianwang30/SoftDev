@@ -1,0 +1,6 @@
+We are able to create a template, which is where we put the html code instead of in the return.
+Inside of this html file, we can designate variables, that we will pass in as arguments when we use the template method.
+This way, we can both have a html specific file, and be able to pass in information into it from our python code.
+My guess is this'll allow us to make super dynamic websites.
+
+And for once, we ain't rick rolling.
