@@ -4,9 +4,16 @@ SoftDev
 K05 -- Further Dictionaries and File Reading
 2022-09-28
 time spent: 1 hr
-DISCO:
+ DISCO:
+  - Dictionary append
+  - Opening files for read
  QCC:
+  - Weird stuff with dict.keys()
  OPS SUMMARY:
+  1. Open the krewes.txt file and put it into string format
+  2. Break off the next @@@ block
+  3. Seperate the @@@ block into name, pd, ducky by the $$$ markers
+  4. Repeat from step 2 if there is more blocks
  '''
 
 import random as random
@@ -23,21 +30,6 @@ def choose(dictionary):
         choice = random.choice(dictionary[key])
         return "name: " + choice[0] + "\npd: " + key + "\nducky: " + choice[1]
     return "empty"
-
-def addPd(pd, dictionary):
-    dictionary[pd] = []
-
-def rmPd(pd, dictionary):
-    return dictionary.pop(pd)
-
-def addStu(name, pd, dictionary):
-    dictionary[pd].append(name)
-    
-def rmStu(name, pd, dictionary):
-    for e in range(len(dictionary[pd])):
-        if dictionary[pd][e] == name:
-            return dictionary[pd].pop(e)
-    return "no student with " + name + " found"
 
 def populate(dic):
     f = open("krewes.txt", "r")
@@ -56,8 +48,10 @@ def populate(dic):
         devo_ducky = devo_info
         
         #add the new entry
+        #if the pd exists
         if devo_pd in dic_keys:
             dic[devo_pd].append([devo_name, devo_ducky])
+        #if the pd does not exist
         else:
             dic[devo_pd] = [[devo_name, devo_ducky]]
             dic_keys.append(devo_pd)
