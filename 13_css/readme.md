@@ -1,5 +1,8 @@
-Luigi (he/they):: Yat Long Chan, Brian Wang
-SoftDev pd 8
-K12: Form(s) Take and Give
-2022-10-17
-time spent: 0.5 hours
+# Luigi (he/they) :: Yat Long Chan, Brian Wang
+
+## DISCO:
+- \* acts as a wildcard in css
+- We can have multiple classes with the same name on 1 page but id names have to be unique
+
+## QCC:
+- none

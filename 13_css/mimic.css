@@ -1,3 +1,11 @@
+/*
+Luigi (he/they):: Yat Long Chan, Brian Wang
+SoftDev pd 8
+K13: Stuylin' & Wylin' & Profilin'
+2022-10-18
+time spent: 0.5 hours
+*/
+
 *{
   font-family:  Arial, Helvetica, sans-serif
 }
@@ -5,7 +13,8 @@
 body{
   background-color: #555;
 } 
-#navbar{
+
+#navbar {
   padding-left: 10px;
   width:200px;
   height: 300px;
@@ -20,14 +29,18 @@ h1 {
     background:#AAA;
     margin-bottom: 0px;
   }
-#big_boi{
+#big_boi {
   display: grid;
   grid-template-columns: 1fr 5fr;
   background: #777;
 }
-#clickables{
+
+#navbar a{
   color: #DDD;
+  text-decoration: none;
+  display: block;
 }
+
 footer{
   background:#444;
   color:#777;
