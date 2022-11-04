@@ -4,22 +4,35 @@
 #2022-11-03
 #time spent:  hours
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
+app.secret_key="HI"
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 def disp_login():
-    print("\n")
-    print(request.form['username'])
+    
+    if 'username' in session:
+        return render_template('auth.html', user=session['username'], passw=session['password'], method=request.method)
+    return render_template('login.html')
+    
+
+
+@app.route("/auth", methods=['POST'])
+def authenticate():
+    if request.method == 'POST':
+        session['username']=request.form['username']
+        session['password']=request.form['password']
+    return render_template('auth.html', user=request.form['username'], passw=request.form['password'], method=request.method)  #response to a form submission
+    
+@app.route("/logout", methods=['GET', 'POST'])
+def logout():
+    #wipe login info cookies
+    print("hi")
+    session.pop['username']
+    session.pop['password']
     return render_template('login.html')
 
-
-
-@app.route("/response", methods=['POST'])
-def authenticate():
-    return render_template('response.html', user=request.form['username'], method=request.method)  #response to a form submission
-    
 if __name__ == "__main__":
     app.debug = True
     app.run()
