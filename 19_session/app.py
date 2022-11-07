@@ -20,17 +20,24 @@ def disp_login():
 
 @app.route("/auth", methods=['POST'])
 def authenticate():
+    ex_user = "mykolyk"
+    ex_pass = "foofoo"
+    #if request.method == 'POST' and request.form['username'] == ex_user and request.form["password"] == ex_user:
     if request.method == 'POST':
-        session['username']=request.form['username']
-        session['password']=request.form['password']
-    return render_template('auth.html', user=request.form['username'], passw=request.form['password'], method=request.method)  #response to a form submission
-    
+        print(request.form)
+        if request.form['username'] == ex_user and request.form["password"] == ex_pass:
+            session['username']=request.form['username']
+            session['password']=request.form['password']
+            return render_template('auth.html', user=request.form['username'], passw=request.form['password'], method=request.method)  #response to a form submission
+
+    return render_template('error.html')
+
 @app.route("/logout", methods=['GET', 'POST'])
 def logout():
     #wipe login info cookies
     print("hi")
-    session.pop['username']
-    session.pop['password']
+    session.pop('username')
+    session.pop('password')
     return render_template('login.html')
 
 if __name__ == "__main__":

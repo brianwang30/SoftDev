@@ -12,15 +12,25 @@
     </head>
 
     <body>
+        <b>
+            Luigi (he/they):: Yat Long Chan, Brian Wang<br>
+            SoftDev pd 8<br>
+            K12: Form(s) Take and Give<br>
+            2022-10-17<br>
+            time spent: 0.5 hours<br>
+        </b>
+        <br><br>
         USERNAME: <b>{{user}}</b>
+        <br>
         PASSWORD: <b>{{passw}}</b>
         <br>
-        REQUEST METHOD: <b>{{method}}</b>
+        <br>
+        
          <h2>
-            Hello there, {{user}}. Welcome to this webpage
+            Hello {{user}}. Welcome to a human website. Where we do human things. Like human internet browsing.
          </h2>
-         <form>
-            <input type="button" value="Logout" formaction="http://127.0.0.1:5000/logout">
+         <form method="GET" action="/logout">
+            <input type="submit" name="Logout" value="Logout">
         </form>
     </body>
 </html>
