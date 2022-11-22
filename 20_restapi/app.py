@@ -2,36 +2,28 @@
 #SoftDev
 #K20 -- REST API
 #2022-11-21
-#time spent: <elapsed time in hours, rounded to nearest tenth>
+#time spent: .7 hr
 
 from flask import Flask, render_template, request, session, redirect
+import requests
+import json
 
 app = Flask(__name__)
+with open('key_nasa.txt') as f:
+    key = f.readline()
 
-@app.route('/', methods=['GET'])
-def disp_login():
-    if 'username' in session:
-        return redirect('/auth')
-    return render_template('login.html')
+
+@app.route('/', methods=['GET', 'POST'])
+def hello():
+    print("what")
+    jason = requests.get(f'https://api.nasa.gov/planetary/apod?api_key={key}').json()
+    #dict = json.load(jason)
+    #jason = request.get_json('https://api.nasa.gov/planetary/apod?api_key=V3ZJOBoMLH0nhHXIue2Vbmabs8gRfMp4alnPqzOY')
+    print("hi")
+    print(jason)
+    #dict = json.loads(jason)
+    return render_template("main.html", url = jason["url"]) 
     
-@app.route("/auth", methods=['GET', 'POST'])
-def authenticate():
-    if request.method == 'GET':
-        return render_template('response.html')
-
-    if request.method == 'POST':
-        #print(request.form)
-        if request.form['username'] == ex_user and request.form["password"] == ex_pass:
-            session['username']=request.form['username']
-            return render_template('response.html')
-        return render_template('login.html', status="Incorrect login info")
-
-@app.route("/logout", methods=['GET'])
-def logout():
-    #wipe login info cookies
-    session.pop('username')
-    return redirect('/')
-
 if __name__ == "__main__":
     app.debug = True
-    app.run()
+    app.run() 
