@@ -38,7 +38,7 @@ var f = function(x) {
   var j=30;
   return j+x;
 };
-
+//running f(20) in the console will give you 50. this is bc 20+30=50
 
 //instantiate an object
 var o = { 'name' : 'Thluffy',
@@ -49,7 +49,8 @@ var o = { 'name' : 'Thluffy',
             return x+30;
           }
         };
-
+//if u type in o into the console, all of these elements willbe printed out like a dictionary.
+//how to call the func x?
 
 var addItem = function(text) {
   var list = document.getElementById("thelist");
@@ -65,7 +66,8 @@ var removeItem = function(n) {
   var listitems = document.getElementsByTagName('li');
   listitems[n].remove();
 };
-
+// when calling just removeItem(8), you will get undefined as an output
+// to solve that issue, set a var to the value of the element index you want to remove from the list and then run removeItem(8)
 
 var red = function() {
   var items = document.getElementsByTagName("li");
@@ -73,7 +75,8 @@ var red = function() {
     items[i].classList.add('red');
   }
 };
-
+//adds red to the class list of each li element in the list
+//if class list solely red, turns that element red
 
 var stripe = function() {
   var items = document.getElementsByTagName("li");
@@ -85,10 +88,11 @@ var stripe = function() {
     }
   }
 };
+//will have strips of red and blue text. each li item alternates between red and blue colors. if even, then red.
 
 //insert your implementations here for...
 // FIB
-function fib (n) {
+var fib = function(n) {
   if (n < 1) {
       return 0
   }
@@ -98,25 +102,25 @@ function fib (n) {
   return fib(n - 1) + fib(n - 2)
 }
 // FAC
-function fact (n) {
+var fact = function(n) {
   if (n < 2) {
       return 1
   }
   return n * fact(n - 1)
 }
 // GCD
-function gcd (a, b) {
-  if (a % b === 0){
-    return 0;
+var gcd = function(a, b) {
+  if (!b){
+    return a;
   }
-  return gcd(b, a&b);
+  return gcd(b, a%b);
 }
 
 // In addition to the style shown above,
 //  you are encouraged to test drive the "arrow function syntax" as shown below.
 //  Note anything notable.
 const myFxn = (param1, param2) => {
-  // body
+  var retVal = param1 + param2;
   return retVal;
 };
 
