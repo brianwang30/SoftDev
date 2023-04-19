@@ -93,13 +93,14 @@ var stripe = function() {
 //insert your implementations here for...
 // FIB
 var fib = function(n) {
-  if (n < 1) {
-      return 0
+  console.log(n)
+  if (n <= 1) {
+      return n
   }
-  if (n <= 2) {
-      return 1
-  }
-  return fib(n - 1) + fib(n - 2)
+  
+  var ret = fib(n - 1) + fib(n - 2);
+  console.log(ret)
+  return ret;
 }
 // FAC
 var fact = function(n) {
@@ -115,6 +116,14 @@ var gcd = function(a, b) {
   }
   return gcd(b, a%b);
 }
+
+var handlefib = function(){
+  console.log(fib(10));
+}
+
+  var fibbut = document.getElementById("fib");
+
+  fibbut.addEventListener( 'click', handlefib);
 
 // In addition to the style shown above,
 //  you are encouraged to test drive the "arrow function syntax" as shown below.
