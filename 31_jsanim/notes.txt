@@ -1,0 +1,5 @@
+- Using window.requestAnimationFrame() adds a layer of animation to repaint the screen using a function.
+	- Oftentimes, this will need to be recursive, so that an animation can occur for more than one frame.
+	- The window part appears to be necessary. Attemps to use something like canvas.rAF() have failed.
+	- This can be called in multiple recursive lines, so to speak, where many blocks on the stack are acting on the same function. It results in the redraw/animate function to be run multiple times per redraw, leading to animations appears faster than before. 
+- Using window.cancelAnimationFrame() allows you to remove a layer of animation using the requestID.
